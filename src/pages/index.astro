@@ -18,13 +18,13 @@ import Button from '../components/Button.astro';
     import { format } from 'date-fns';
 
     const payloadUrl = import.meta.env.PUBLIC_PAYLOAD_URL || 'http://localhost:3000/api';
-
+    const basePath = import.meta.env.BASE_PATH || ''
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
 
     const { token } = params;
 
-    if (!token) window.location.href = '/error';
+    if (!token) window.location.href = `${basePath}/error`;
    
     const title = document.getElementById('title') as HTMLHeadingElement;
     const info1 = document.getElementById('info-1') as HTMLParagraphElement;
@@ -40,15 +40,13 @@ import Button from '../components/Button.astro';
             headers: { Authorization: `Bearer ${token}` },
         });
 
-        console.log('setting the expiration timeout')
         setTimeout(() => {
-            // We redirect nine minutes (540000 ms) after the page loads, 
+            // redirect nine minutes (540000 ms) after the page loads, 
             // since the exchange endpoint expires after ten minutes.
-            console.log("Redirecting....");
-            window.location.replace("/expired");
+            window.location.replace(`${basePath}/expired`);
         }, 540000);
        
-        if (res.status !== 200) window.location.href = '/error';
+        if (res.status !== 200) window.location.href = `${basePath}/error`;
         else {
             const {
                 links,
@@ -94,10 +92,10 @@ import Button from '../components/Button.astro';
                 const dataUrl = await QRCode.toDataURL(url);
                 qrcode.src = dataUrl;
                 directAnchorLink.href = url
-            } else window.location.href = '/error';
+            } else window.location.href = `${basePath}/error`;
         }
     } catch (error) {
         console.error(error);
-        window.location.href = '/error';
+        window.location.href = `${basePath}/error`;
     }
 </script>

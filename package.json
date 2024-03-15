@@ -1,5 +1,5 @@
 {
-  "name": "@admin-dashboard/claim-page",
+  "name": "@digitalcredentials/admin-dashboard-claim-page",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "dev-local": "-port 3008 astro dev"
+    "dev-local": "astro dev --port 8080"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.0",
