@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-const basePath = import.meta.env.BASE_PATH
+const basePath = process.env.BASE_PATH
 
 // https://astro.build/config
 const config = {
