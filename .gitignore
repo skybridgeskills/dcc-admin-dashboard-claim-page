@@ -1,6 +1,10 @@
 # build output
 dist/
 
+# compose file that we use for testing
+compose.yaml
+
+
 # generated types
 .astro/
 

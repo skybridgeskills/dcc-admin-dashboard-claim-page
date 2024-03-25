@@ -17,8 +17,16 @@ import Button from '../components/Button.astro';
     import QRCode from 'qrcode';
     import { format } from 'date-fns';
 
-    const payloadUrl = import.meta.env.PUBLIC_PAYLOAD_URL || 'http://localhost:3000/api';
-    const basePath = import.meta.env.BASE_PATH || ''
+    const origin = window.location.origin
+    const url = new URL(origin)
+    const isLocalhost = url.hostname === 'localhost'
+    
+    // In production, we assume this will always run on the same server as the dashboard
+    // with both proxied by nginx running on port 80.
+    // Otherwise, if the origin is localhost, then we assume that the dashboard
+    // is also running on localhost and at port 3000
+    const payloadUrl = isLocalhost ? `${url.protocol}//${url.hostname}:3000/api` : '/api'
+    const basePath = '/claim'
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
 
