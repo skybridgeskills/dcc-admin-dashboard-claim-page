@@ -7,12 +7,10 @@ import Modal from '../components/Modal.astro';
 
 import Placeholder from '../assets/images/placeholder.png';
 import Button from '../components/Button.astro';
+const hostname = Astro.url.hostname;
 ---
 
 <Layout title="Getting Credential...">
-    TODO: Identify source for custom white labled landing page.
-    Docker ENV targeting JSON in an s3 bucket?
-    A markdown file and a logo?
-    Use the domain name to lookup branding and content in a same-named s3 bucket? If localhost - use DCC?
+    <img src={`/brand/${hostname}/logo.png`} />
     <a href="/claim">claim page moved here</a>
 </Layout>
