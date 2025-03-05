@@ -1,13 +1,17 @@
 FROM node:lts-alpine AS build
 WORKDIR /app
+
 ENV PUBLIC_PAYLOAD_URL="/api"
+ENV BRANDING_URL=""
 
 COPY package*.json ./
 RUN npm i -g pnpm
 RUN pnpm i
 COPY . .
 
-RUN PUBLIC_PAYLOAD_URL=$PUBLIC_PAYLOAD_URL \
+RUN \
+  PUBLIC_PAYLOAD_URL=$PUBLIC_PAYLOAD_URL \
+  BRANDING_URL=$BRANDING_URL \
   pnpm build
 
 FROM nginx:alpine AS runtime
