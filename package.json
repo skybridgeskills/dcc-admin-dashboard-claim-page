@@ -14,7 +14,7 @@
     "@astrojs/tailwind": "^5.0.0",
     "@learncard/init": "^1.0.22",
     "@learncard/types": "^5.3.2",
-    "astro": "^3.0.8",
+    "astro": "^5.0.0",
     "credential-handler-polyfill": "3",
     "date-fns": "^2.30.0",
     "qrcode": "^1.5.3",

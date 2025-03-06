@@ -58,5 +58,23 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## White Labeling
+
+In development branding comes from `public/*` based on the hostname.
+
+See `pages/index.astro` that does this:
+
+```
+---
+const hostname = Astro.url.hostname;
+---
+
+<img src={`/brand/${hostname}/logo.png`} />
+
+```
+
+In production a volume is mounted to the container for nginx to use. Run `docker compose up` to simulate this.
+
+
 ## License
 MIT © [MIT](#)
