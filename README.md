@@ -60,21 +60,17 @@ All commands are run from the root of the project, from a terminal:
 
 ## White Labeling
 
-In development branding comes from `public/*` based on the hostname.
-
-See `pages/index.astro` that does this:
+Locally the white label for the index page comes from `public/brand`. In production these assets are copied from an s3 bucket into nginx. Build `docker build -t claim-service .` and run:
 
 ```
----
-const hostname = Astro.url.hostname;
----
-
-<img src={`/brand/${hostname}/logo.png`} />
-
+docker run -p 8080:8080 \
+  -e S3_BUCKET=my-aws-bucket/whitelabel \
+  -e AWS_ACCESS_KEY_ID \
+  -e AWS_SECRET_ACCESS_KEY \
+  -e AWS_DEFAULT_REGION \
+  -e AWS_SESSION_TOKEN \
+  claim-service
 ```
-
-In production a volume is mounted to the container for nginx to use. Run `docker compose up` to simulate this.
-
 
 ## License
 MIT © [MIT](#)

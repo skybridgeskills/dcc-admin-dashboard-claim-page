@@ -7,12 +7,10 @@ import Modal from '../components/Modal.astro';
 
 import Placeholder from '../assets/images/placeholder.png';
 import Button from '../components/Button.astro';
-const hostname = Astro.url.hostname;
-const brandUrl = new URL(`/brand/${hostname}/brand.json`, Astro.url)
-const brand = await (await fetch(brandUrl)).json();
+import WhiteLabel from '../components/WhiteLabel.svelte';
+
 ---
 
-<Layout title="Getting Credential...">
-    <img src={`/brand/${hostname}/logo.png`} style="max-width: 300px;" />
-    {brand.text}
+<Layout>
+  <WhiteLabel client:load />
 </Layout>
