@@ -33,7 +33,7 @@ import Button from '../components/Button.astro';
 
     try {
     
-        const config = await (await fetch(new URL('/brand/config.json', Astro.url))).json();
+        const config = await (await fetch('/brand/config.json')).json();
         const res = await fetch(`${config.api}/get-credential-links`, {
             headers: { Authorization: `Bearer ${token}` },
         });
