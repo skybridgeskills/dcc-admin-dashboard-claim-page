@@ -4,10 +4,9 @@ import { Image } from 'astro:assets';
 
 interface Props {
     title: string;
-    backgroundColor: string;
 }
 
-const { title, backgroundColor } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +20,7 @@ const { title, backgroundColor } = Astro.props;
         <title>{title}</title>
         <ViewTransitions />
     </head>
-    <body style={`background-color:${backgroundColor};`} >
+    <body>
         <main class="w-full h-full flex flex-col gap-10 xl:gap-20 p-5 xl:p-24">
             <slot />
         </main>

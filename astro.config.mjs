@@ -1,9 +1,10 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import svelte from "@astrojs/svelte"
 
 // https://astro.build/config
 const config = {
-  integrations: [tailwind()],
+  integrations: [tailwind(), svelte()],
   image: {
     service: passthroughImageService()
   }

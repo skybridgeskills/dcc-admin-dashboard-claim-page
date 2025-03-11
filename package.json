@@ -11,6 +11,7 @@
     "dev-local": "astro dev --port 8080"
   },
   "dependencies": {
+    "@astrojs/svelte": "^7.0.6",
     "@astrojs/tailwind": "^5.0.0",
     "@learncard/init": "^1.0.22",
     "@learncard/types": "^5.3.2",
@@ -18,6 +19,7 @@
     "credential-handler-polyfill": "3",
     "date-fns": "^2.30.0",
     "qrcode": "^1.5.3",
+    "svelte": "^5.22.6",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {

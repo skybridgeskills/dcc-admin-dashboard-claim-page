@@ -7,11 +7,10 @@ import Modal from '../components/Modal.astro';
 
 import Placeholder from '../assets/images/placeholder.png';
 import Button from '../components/Button.astro';
-const config = await (await fetch(new URL('/config.json', Astro.url))).json();
 ---
 
 <Layout title="Getting Credential...">
-    <MainSection />
+    <MainSection class="flex flex-col gap-10 xl:gap-20 p-5 xl:p-24" />
 </Layout>
 
 <script>
@@ -34,6 +33,7 @@ const config = await (await fetch(new URL('/config.json', Astro.url))).json();
 
     try {
     
+        const config = await (await fetch(new URL('/brand/config.json', Astro.url))).json();
         const res = await fetch(`${config.api}/get-credential-links`, {
             headers: { Authorization: `Bearer ${token}` },
         });
