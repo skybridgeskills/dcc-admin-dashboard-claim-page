@@ -1,8 +1,8 @@
 {
   "api": "http://localhost:3000/api",
-  "title" : "Hire Heroes USA",
-  "text" : "Hire Heroes USA empowers U.S. military members, veterans, and military spouses to succeed in the civilian workforce.",
-  "color": "#1C3A60",
-  "sponsor_text": "Sponsored by Walmart",
-  "sponsor_logo": "walmart.png"
+  "title" : "DCC",
+  "text" : "This is the default white label text",
+  "color": "#9BCED8",
+  "sponsor_text": "",
+  "sponsor_logo": ""
 }

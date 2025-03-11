@@ -42,9 +42,11 @@
 {:else}
     <div class="bg-white rounded-lg shadow-lg p-8 max-w-lg mx-auto">
         <img src="/brand/logo.png" style="max-width: 300px" class="mb-4 mx-auto" alt="Brand logo" />
-        <p class="mb-16 text-center">{config.text}</p>
-        <hr class="mb-4" />
-        <p class="mb-4">{config.sponsor_text}</p>
-        <img src="/brand/{config.sponsor_logo}" style="max-width: 200px" alt="Sponsor logo" />
+        <p class="text-center py-4">{config.text}</p>
+        {#if config.sponsor_text}
+            <hr class="my-4" />
+            <p class="mb-4">{config.sponsor_text}</p>
+            <img src="/brand/{config.sponsor_logo}" style="max-width: 200px" alt="Sponsor logo" />
+        {/if}
     </div>
 {/if}
