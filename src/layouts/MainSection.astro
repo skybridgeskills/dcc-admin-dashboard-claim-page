@@ -8,39 +8,31 @@ import Download from '../assets/images/download.svg';
 import QR from '../assets/images/qr.svg';
 ---
 
-<section
-    class="flex items-center xl:justify-between gap-14 flex-col xl:flex-row"
-    transition:persist
->
-    <article class="flex flex-col gap-5">
-        <output>
-            <h2
-                id="title"
-                class="text-xl xl:font-extrabold tracking-tight leading-10 xl:text-5xl text-slate-900 mb-10"
-            >
-            </h2>
+<section class="flex items-center gap-5 flex-col bg-white rounded-lg shadow-lg max-w-lg mx-auto" transition:persist>
 
-            <p id="info-1" class="mb-5 text-sm xl:text-xl font-semibold text-slate-900"></p>
+  <article class="flex flex-col gap-5">
+    <output class="p-8 border-b border-gray-200">
+      <h2 id="title" class="text-xl xl:font-extrabold tracking-tight leading-10 xl:text-4xl text-slate-900">
+      </h2>
+      <div>
+        <p id="info-1" class="text-sm xl:text-lg font-semibold text-slate-900"></p>
+      </div>
+      <div>
+        <p id="info-2" class="text-sm xl:text-lg font-semibold text-slate-900"></p>
+      </div>
+    </output>
 
-            <p id="info-2" class="text-sm xl:text-xl font-semibold text-slate-900"></p>
-        </output>
-
-        <footer class="flex gap-5">
-            
-            <p id="info-3" class="text-sm xl:text-xl font-semibold text-slate-900">Scan the QR code with your phone camera to add your credential to the Learner Credential Wallet. <br/></br>Or, if you are already viewing this page from your phone then click <a class="text-sm xl:text-xl font-extrabold italic text-red-900" id="link-direct" href="">here</a>.</p>
-            <!--Button id="scan-qr-code" style="secondary">
-                <Image class="h-4 w-4 xl:h-auto xl:w-auto" src={QR} alt="download-icon" />
-                <span class="text-sm font-medium xl:text-lg">Scan QR Code</span>
-            </Button-->
-        </footer>
-    </article>
-
-    <figure class="bg-white rounded-3xl p-5">
-        <Image
-            src={Placeholder}
-            class="max-h-96 max-w-96 h-auto w-auto"
-            id="qr-code"
-            alt="qr-code"
-        />
-    </figure>
+    <footer class="flex flex-col text-center text-sm px-8">
+      <p>Scan the QR code to claim </p>
+      <figure>
+        <Image src={Placeholder} class="max-h-96 max-w-96 h-auto w-auto" id="qr-code" alt="qr-code" />
+      </figure>
+      <p>
+        or claim with a wallet on this device <a class="font-extrabold underline" id="link-direct" href="">here</a>.
+      </p>
+    </footer>
+  </article>
+  <div class="border-t border-gray-200 w-full">
+    <img src="/brand/logo.png" style="max-width: 150px" class="my-4 mx-auto" alt="Brand logo" />
+  </div>
 </section>
