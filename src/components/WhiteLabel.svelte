@@ -17,7 +17,8 @@
     onMount(async () => {
         try {
             const t = await sha1(window.origin);
-            configUrl = `https://dcc-brand-6e8f40c02581a52e.s3.amazonaws.com/${t}`;
+            const s3Bucket = import.meta.env.PUBLIC_S3_BUCKET;
+            configUrl = `https://${s3Bucket}.s3.amazonaws.com/${t}`;
             const response = await fetch(configUrl + '/config.json');
             if (!response.ok) {
                 throw new Error(`Failed to load config: ${response.status} ${response.statusText}`);

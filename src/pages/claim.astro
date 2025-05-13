@@ -19,7 +19,7 @@ import MainSection from '../layouts/MainSection.astro';
             .join('');
     }
     const t = await sha1(window.origin);
-    let configUrl = `https://dcc-brand-6e8f40c02581a52e.s3.amazonaws.com/${t}`;
+    let configUrl = `https://${import.meta.env.PUBLIC_S3_BUCKET}.s3.amazonaws.com/${t}`;
 
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
