@@ -1,5 +1,5 @@
 <script lang="ts">
-	const { data }: { data: Config } = $props();
+	const { data }: { data: App.Config } = $props();
 </script>
 
 <svelte:head>
