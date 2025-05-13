@@ -1,8 +1,0 @@
-{
-  "api": "http://localhost:3000/api",
-  "title" : "DCC",
-  "text" : "Verifiable Credential tools provided by the Digital Credentials Consortium",
-  "color": "#9BCED8",
-  "sponsor_text": "",
-  "sponsor_logo": ""
-}

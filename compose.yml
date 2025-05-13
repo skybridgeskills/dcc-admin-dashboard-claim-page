@@ -1,8 +1,0 @@
-services:
-  app:
-    build:
-      context: .
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./public/brand:/usr/share/nginx/brand
