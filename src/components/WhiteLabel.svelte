@@ -4,10 +4,21 @@
     let config = null;
     let loading = true;
     let error = null;
+    let configUrl = null;
+
+    async function sha1(str) {
+        const enc = new TextEncoder();
+        const hash = await crypto.subtle.digest('SHA-1', enc.encode(str));
+        return Array.from(new Uint8Array(hash))
+            .map(v => v.toString(16).padStart(2, '0'))
+            .join('');
+    }
 
     onMount(async () => {
         try {
-            const response = await fetch('/brand/config.json');
+            const t = await sha1(window.origin);
+            configUrl = `https://dcc-brand-6e8f40c02581a52e.s3.amazonaws.com/${t}`;
+            const response = await fetch(configUrl + '/config.json');
             if (!response.ok) {
                 throw new Error(`Failed to load config: ${response.status} ${response.statusText}`);
             }
@@ -41,12 +52,17 @@
     </div>
 {:else}
     <div class="bg-white rounded-lg shadow-lg p-8 max-w-lg mx-auto">
-        <img src="/brand/logo.png" style="max-width: 300px" class="mb-4 mx-auto" alt="Brand logo" />
+        <img
+            src="{configUrl}/logo.png"
+            style="max-width: 300px"
+            class="mb-4 mx-auto"
+            alt="Brand logo"
+        />
         <p class="text-center py-4">{config.text}</p>
         {#if config.sponsor_text}
             <hr class="my-4" />
             <p class="mb-4">{config.sponsor_text}</p>
-            <img src="/brand/{config.sponsor_logo}" style="max-width: 200px" alt="Sponsor logo" />
+            <img src="{configUrl}/sponsor_logo.png" style="max-width: 200px" alt="Sponsor logo" />
         {/if}
     </div>
 {/if}

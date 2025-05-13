@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MainSection from '../layouts/MainSection.astro';
+
 ---
 
 <Layout title="Getting Credential...">
@@ -10,6 +11,15 @@ import MainSection from '../layouts/MainSection.astro';
 <script>
     import QRCode from 'qrcode';
     import { format } from 'date-fns';
+    async function sha1(str: string) {
+        const enc = new TextEncoder();
+        const hash = await crypto.subtle.digest('SHA-1', enc.encode(str));
+        return Array.from(new Uint8Array(hash))
+            .map(v => v.toString(16).padStart(2, '0'))
+            .join('');
+    }
+    const t = await sha1(window.origin);
+    let configUrl = `https://dcc-brand-6e8f40c02581a52e.s3.amazonaws.com/${t}`;
 
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
@@ -21,13 +31,16 @@ import MainSection from '../layouts/MainSection.astro';
     const info1 = document.getElementById('info-1') as HTMLParagraphElement;
     const info2 = document.getElementById('info-2') as HTMLParagraphElement;
     const qrcode = document.getElementById('qr-code') as HTMLImageElement;
+    const claimLogo = document.getElementById('claim_logo') as HTMLImageElement;
     const directAnchorLink = document.getElementById('link-direct') as HTMLAnchorElement;
+
+    claimLogo.src = `${configUrl}/logo.png`;
     
     title.innerText = 'Getting Credential...';
 
     try {
     
-        const config = await (await fetch('/brand/config.json')).json();
+        const config = await (await fetch(configUrl + '/config.json')).json();
         if (config.color) {
             document.body.style.backgroundColor = config.color;
         }

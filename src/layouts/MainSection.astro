@@ -1,11 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-
-import Button from '../components/Button.astro';
-
 import Placeholder from '../assets/images/placeholder.png';
-import Download from '../assets/images/download.svg';
-import QR from '../assets/images/qr.svg';
 ---
 
 <section class="flex items-center gap-5 flex-col bg-white rounded-lg shadow-lg max-w-lg mx-auto" transition:persist>
@@ -33,6 +28,6 @@ import QR from '../assets/images/qr.svg';
     </footer>
   </article>
   <div class="border-t border-gray-200 w-full">
-    <img src="/brand/logo.png" style="max-width: 150px" class="my-4 mx-auto" alt="Brand logo" />
+    <img id="claim_logo" src="/brand/logo.png" style="max-width: 150px" class="my-4 mx-auto" alt="Brand logo" />
   </div>
 </section>
