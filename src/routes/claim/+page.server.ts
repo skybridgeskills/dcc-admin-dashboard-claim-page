@@ -4,7 +4,12 @@ import type { PageServerLoad } from '../$types';
 import QRCode from 'qrcode';
 export const load: PageServerLoad = async ({ url, parent }) => {
 	const token = url.searchParams.get('token');
-	const { config } = await getTenantConfig(url.origin)
+  const { config, configUrl } = await getTenantConfig(url.origin)
+  const config_ =  {
+    logo_src: configUrl + "/logo.png",
+    sponsor_logo_src: configUrl + "/sponsor_logo.png",
+    ...config,
+  };
 
 	const res = await fetch(`${config.api}/get-credential-links`, {
 		headers: { Authorization: `Bearer ${token}` }
@@ -65,6 +70,6 @@ export const load: PageServerLoad = async ({ url, parent }) => {
 		earnerName,
 		awardedDate,
 		issuedDate,
-		logo_src: config.logo_src
+		...config_,
 	};
 };
