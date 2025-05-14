@@ -28,11 +28,11 @@ RUN npm install --production
 COPY --from=builder /app/build ./build
 
 # Set the port
-ENV PORT=4009
-ENV ORIGIN=http://localhost:4009
+ENV PORT=4321
+ENV ORIGIN=http://localhost:4321
 
 # Expose the port the app runs on
-EXPOSE 4009
+EXPOSE 4321
 
 # Start the application
 CMD ["node", "build"] 
